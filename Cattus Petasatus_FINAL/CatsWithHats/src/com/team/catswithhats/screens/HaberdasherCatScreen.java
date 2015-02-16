@@ -1,0 +1,237 @@
+package com.team.catswithhats.screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.team.catswithhats.CatsWithHats;
+import com.team.catswithhats.GameFile;
+import com.team.catswithhats.SoundFile;
+
+public class HaberdasherCatScreen implements Screen {
+
+	CatsWithHats game;
+	Skin skin;
+	Stage stage;
+
+	// instantiate three buttons to be displayed on the screen.
+	TextButton Cats; // button used to observe your Cat's information
+	TextButton Hats; // button used to fuse Hats
+	TextButton back; // button to navigate back to the Main Menu Screen
+	TextureAtlas atlas;
+	Texture catPicture;
+
+	BitmapFont black;
+	BitmapFont white;
+
+	SpriteBatch batch;
+	Label label;
+	
+	Texture bg;
+	Texture title;
+	Texture frame;
+
+	public HaberdasherCatScreen(CatsWithHats game) {
+		this.game = game;
+	}
+
+	@Override
+	public void render(float delta) {
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+
+		batch.begin();
+		batch.draw(bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		batch.draw(title, Gdx.graphics.getWidth() / 2 - title.getWidth() / 2, Gdx.graphics.getHeight() * .9f - title.getHeight() / 2);
+		batch.draw(frame, Gdx.graphics.getWidth()-catPicture.getWidth()-113, -55);
+		batch.draw(catPicture, Gdx.graphics.getWidth()-catPicture.getWidth()-50, 10);
+		batch.end();
+
+		stage.act(delta);
+		stage.draw();
+		
+		Table.drawDebug(stage);
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		if (stage == null) {
+			stage = new Stage(width, height, true);
+		}
+		stage.clear();
+
+		Gdx.input.setInputProcessor(stage);
+
+		// set style
+		TextButtonStyle style = new TextButtonStyle();
+		style.up = skin.getDrawable("buttonnormal");
+		style.down = skin.getDrawable("buttonpressed");
+		style.font = black;
+
+		// begin back button logic
+		back = new TextButton("Back", style);
+		back.setWidth(200);
+		back.setHeight(100);
+		back.setX(0);
+		back.setY(Gdx.graphics.getHeight() - back.getHeight());
+
+		back.addListener(new InputListener() {
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				SoundFile.soundCheck(back.isPressed(), "regButton"); // play
+																		// sound
+				System.out.println("down");
+				return true;
+			}
+
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				game.setScreen(new HaberdasherMenuScreen(game));
+				System.out.println("back pressed");
+			}
+		});
+
+		stage.addActor(back);
+		// end back logic
+		
+		//LABELS
+		LabelStyle ls = new LabelStyle(white, Color.WHITE);
+//		label = new Label("CAT SCREEN", ls);
+//		label.setX(Gdx.graphics.getWidth() / 2 - 200);
+//		label.setY(Gdx.graphics.getHeight() - 50);
+//		label.setWidth(width);
+//		label.setAlignment(Align.center);
+
+		//stage.addActor(label);
+		
+		//NAME LABEL
+		Label labelName = new Label("Cat Name: "+ GameFile.getCat().getName(), ls);
+		labelName.setX(50);
+		labelName.setY(Gdx.graphics.getHeight() - 150);
+		labelName.setWidth(width);
+		
+		stage.addActor(labelName);
+		
+		//STR LABEL
+		Label labelStr = new Label("Strength: "+ GameFile.getCat().getStrength(), ls);
+		labelStr.setX(50);
+		labelStr.setY(Gdx.graphics.getHeight() - 175);
+		labelStr.setWidth(width);
+		
+		stage.addActor(labelStr);
+		
+		//AGI LABEL
+		Label labelAgi = new Label("Agility: "+ GameFile.getCat().getAgility(), ls);
+		labelAgi.setX(50);
+		labelAgi.setY(Gdx.graphics.getHeight() - 200);
+		labelAgi.setWidth(width);
+		
+		stage.addActor(labelAgi);
+		
+		//DEF LABEL
+		Label labelDef = new Label("Defense: "+ GameFile.getCat().getDefense(), ls);
+		labelDef.setX(50);
+		labelDef.setY(Gdx.graphics.getHeight() - 225);
+		labelDef.setWidth(width);
+		
+		stage.addActor(labelDef);
+		
+		//Current HP LABEL
+		Label labelCurHP = new Label("Current HP: "+ GameFile.getCat().getCurrentHP()+"/"+GameFile.getCat().getBaseHP(), ls);
+		labelCurHP.setX(50);
+		labelCurHP.setY(Gdx.graphics.getHeight() - 250);
+		labelCurHP.setWidth(width);
+		
+		stage.addActor(labelCurHP);
+		
+		//LEVEL LABEL
+		Label labelLevel = new Label("Level: "+ GameFile.getCat().getLevel(), ls);
+		labelLevel.setX(50);
+		labelLevel.setY(Gdx.graphics.getHeight() - 275);
+		labelLevel.setWidth(width);
+		
+		stage.addActor(labelLevel);
+		
+		//Current XP LABEL
+		Label labelXP = new Label("Current XP: "+ GameFile.getCat().getXPCurrent()+"/"+GameFile.getCat().getXPToNextLevel(), ls);
+		labelXP.setX(50);
+		labelXP.setY(Gdx.graphics.getHeight() - 300);
+		labelXP.setWidth(width);
+		
+		stage.addActor(labelXP);
+		
+		
+		
+	}
+
+	@Override
+	public void show() {
+		batch = new SpriteBatch();
+		atlas = new TextureAtlas("data/button.pack");
+		skin = new Skin();
+		skin.addRegions(atlas);
+		white = new BitmapFont(Gdx.files.internal("data/whitefont.fnt"), false);
+		black = new BitmapFont(Gdx.files.internal("data/font.fnt"), false);
+		catPicture = GameFile.getCat().getPicture();
+		bg = new Texture("Screens/default.jpg");
+		title = new Texture("Screens/HCatScreen.png");
+		frame = new Texture("Screens/frame.png");
+	}
+
+	@Override
+	public void hide() {
+
+	}
+
+	@Override
+	public void pause() {
+
+	}
+
+	@Override
+	public void resume() {
+
+	}
+
+	@Override
+	public void dispose() {
+		stage.dispose();
+		batch.dispose();
+		skin.dispose();
+		atlas.dispose();
+		catPicture.dispose();
+		bg.dispose();
+		title.dispose();
+		frame.dispose();
+	}
+
+	public void setSound(int value) {
+
+	}
+
+	public void setNotifications(int value) {
+
+	}
+
+	public void setReset(int value) {
+
+	}
+
+	public void setMainMenu() {
+
+	}
+
+}

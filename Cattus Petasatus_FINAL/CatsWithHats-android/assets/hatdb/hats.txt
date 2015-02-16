@@ -1,0 +1,155 @@
+No Hat
+DEFAULT
+0 0 0
+hatdb/NoHat.gif
+catdb/normal.jpg
+Wearing this hat makes you feel special
+Everywhere
+30 30 40 80
+Nip
+Nuzzle
+Scratch
+Frenzy
+
+Tidal Hat
+WATER
+3 4 5
+hatdb/Tidal.gif
+catdb/Water.jpg
+Legends of the Tidal Hat's existance among the shores of Lake Claire have been told for centuries
+Lake Claire
+40 30 50 80
+Water Blast
+Jet Stream
+Flood
+Flush
+
+Deep Sea Hat
+WATER
+3 4 5
+hatdb/DeepSea.gif
+catdb/Water.jpg
+The Deep Sea Hat was rumored to forged in the depths of Atlantis itself
+Lake Claire
+50 40 50 80
+Cyclone
+Whirlpool
+Flood
+Drown
+
+Dead Sea Hat
+WATER
+3 4 5
+hatdb/Water.gif
+catdb/Water.jpg
+This historical Hat was discovered along with the Dead Sea Scrolls in 1947
+MAP
+50 60 70 40
+Salty Scratch
+Rough, Dry Lick
+Lethal Meow
+Water Blast
+
+Infernal Hat
+FIRE
+3 5 3
+hatdb/Infernal.gif
+catdb/Fire.jpg
+Wearers of the Infernal Hat are said to work for the sinister Devil Cat himself
+Towers
+30 50 70 80
+Flame Vortex
+Rain of Fire
+Demonic Yawn
+Eruption
+
+Devil Hat
+FIRE
+3 5 3
+hatdb/Devil.gif
+catdb/Fire.jpg
+It is told that the Devil Hat holds to power to command the Underworld
+Towers
+60 40 50 80
+Spicy Breath
+Molten Blast
+Hellfire
+Cuteness Overload
+
+Blast Hat
+FIRE
+3 5 3
+hatdb/Blast.gif
+catdb/Fire.jpg
+Fires produced by the Blast Hat cannot be put out by anyone but its wearer
+Towers
+60 70 50 60
+Burn
+Torch
+Blaze
+Smoke Out
+
+Disaster Hat
+EARTH
+3 5 3
+hatdb/Disaster.gif
+catdb/Tony.png
+The Disaster Hat contains the power to literally change the world as we know it
+Towers
+40 60 50 60
+Earthquake
+Tornado
+Sonic Boom
+Mudslide
+
+Island Hat
+EARTH
+3 5 3
+hatdb/Island.gif
+catdb/Tony.png
+Wearers of the Island Hat are said to be fond of Jammin'
+Towers
+60 50 80 60
+Tropical Storm
+Curious Bite
+Category 5 Purr
+Coconut Throw
+
+Mountaineer Hat
+EARTH
+3 5 3
+hatdb/Mountaineer.gif
+catdb/Tony.png
+The Mountaineer Hat was found on the corpse of a forgotten miner
+Towers
+60 80 70 60
+Grapple
+Avalanche
+Fissure
+Boulder Hurl
+
+Grass Hat
+GRASS
+4 3 5
+hatdb/Grass.gif
+catdb/Grass.jpg
+Wearing this hat makes you Grrrreeeaaat at selling cereal
+Arboretum
+60 30 90 50
+Giga Drain
+Solar Flare
+Leaf Blade
+Vine Whip
+
+Electric Hat
+ELECTRIC
+5 5 3
+hatdb/Electric.gif
+catdb/Electric.jpg
+Created by Thomas Edison for use by the mighty Cat Lords of the West
+Utility Plant
+40 80 50 60
+Quick Attack
+Bolt Tackle
+Electric Fence
+Live Wire

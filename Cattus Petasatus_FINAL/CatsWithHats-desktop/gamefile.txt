@@ -1,0 +1,8 @@
+true
+true
+bob
+dsfs
+7 13 7 58 58 2 0 10474
+DEFAULT##No Hat
+WATER##Tidal Hat##false
+DEFAULT##No Hat##true
